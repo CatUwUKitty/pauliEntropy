@@ -1,0 +1,21 @@
+#!/bin/bash
+#PBS -P Entropy
+#PBS -q parallel
+#PBS -l select=1:ncpus=12:mem=64gb
+#PBS -l walltime=240:00:00
+#PBS -j oe
+#PBS -N PauliEntropy
+
+set -eo pipefail
+cd "${PBS_O_WORKDIR}"
+export MALLOC_ARENA_MAX=12
+export OMP_NUM_THREADS=12
+export OPENBLAS_NUM_THREADS=12
+export MKL_NUM_THREADS=12
+export NUMEXPR_NUM_THREADS=12
+source /app1/ebenv Python-3.10.4
+unset PYTHONPATH
+source "${HOME}/myenv/bin/activate"
+python -m pip install -r requirements.txt
+export MOSEKLM_LICENSE_FILE="${HOME}/mosek/mosek.lic"
+exec python -u run_cluster.py 
