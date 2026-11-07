@@ -92,10 +92,16 @@ range and RAM request in that directory. Stop the controller before
 intentionally cancelling a job. An interrupted submission with an unknown job
 ID requires checking PBS before recovering the pending entry.
 
-After fixing a problem that exhausted a range's retries, stop the old
-controller and run `python3 -u submit_pauli_retries.py --retry-exhausted`.
-The flag restarts ranges that already failed at 64 GB, archives their prior
-attempt logs, and reuses their CSV checkpoints. Successful and active
+PBS can report a finished job without an exit status, for example after
+cancelling a queued job. The controller records it as unreported and waits
+for an explicit restart of that range while monitoring the other jobs.
+
+After cancelling the batch or fixing a failure, stop the old controller
+and run `python3 -u submit_pauli_retries.py --restart-failed`. This checks
+tracked job IDs, then restarts finished ranges with a nonzero or unreported
+exit status at 32 GB. Use `--retry-exhausted` to limit the restart to 64 GB
+failures and finished jobs with an unreported exit status. Both options
+archive prior attempt logs and reuse CSV checkpoints. Successful and active
 ranges keep their recorded state.
 
 Each range writes to its own `results/shards/START-END/` directory. Retries

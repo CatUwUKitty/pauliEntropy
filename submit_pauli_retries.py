@@ -20,6 +20,7 @@ RANGES = (
 MEMORY_GB = (32, 64)
 POLL_SECONDS = 60
 JOB_ID = re.compile(r"[0-9]+(?:\.[\w.-]+)?(?:@[\w.-]+)?")
+EXIT_UNREPORTED = "unreported"
 
 
 def pbs(*args):
@@ -55,9 +56,19 @@ def finished_status(job_id):
         raise RuntimeError(f"PBS returned no history for {job_id}. Check that job before resuming.")
     if job.get("job_state") != "F":
         return None
-    if "Exit_status" not in job:
-        raise RuntimeError(f"PBS reported {job_id} finished without an exit status.")
-    return int(job["Exit_status"])
+    status = job.get("Exit_status")
+    return EXIT_UNREPORTED if status in (None, "") else int(status)
+
+
+def refresh_attempt(key, attempts, path, state):
+    if not attempts or attempts[-1]["exit_status"] is not None:
+        return
+    attempt = attempts[-1]
+    status = finished_status(attempt["job_id"])
+    if status is not None:
+        attempt["exit_status"] = status
+        save_state(path, state)
+        print(f"{key}: {attempt['job_id']} finished (exit status {status})", flush=True)
 
 
 def submit_attempt(root, start, end, ram, attempts, path, state):
@@ -93,17 +104,11 @@ def monitor(root, path, state):
         for start, end in RANGES:
             key = f"{start}-{end}"
             attempts = state[key]
+            refresh_attempt(key, attempts, path, state)
             if attempts and attempts[-1]["exit_status"] is None:
-                attempt = attempts[-1]
-                code = finished_status(attempt["job_id"])
-                if code is None:
-                    active = True
-                    continue
-                attempt["exit_status"] = code
-                save_state(path, state)
-                print(f"{key}: {attempt['job_id']} exited with status {code}", flush=True)
-
-            if attempts and attempts[-1]["exit_status"] == 0:
+                active = True
+                continue
+            if attempts and attempts[-1]["exit_status"] in (0, EXIT_UNREPORTED):
                 continue
             previous_ram = attempts[-1]["ram_gb"] if attempts else 0
             ram = next((candidate for candidate in MEMORY_GB if candidate > previous_ram), None)
@@ -119,34 +124,44 @@ def monitor(root, path, state):
     failed = [key for key, attempts in state.items() if attempts[-1]["exit_status"] != 0]
     print(f"Completed {len(RANGES) - len(failed)} of {len(RANGES)} ranges.", flush=True)
     if failed:
-        print(f"Failed at 64 GB: {', '.join(failed)}. See {path} and the attempt logs.", flush=True)
+        print(f"Ranges needing a restart: {', '.join(failed)}. See {path} and the attempt logs.", flush=True)
     return int(bool(failed))
 
 
-def retry_exhausted(path, state):
-    exhausted = [key for key, attempts in state.items()
-                 if attempts and attempts[-1]["ram_gb"] >= MEMORY_GB[-1]
-                 and attempts[-1]["exit_status"] not in (None, 0)]
-    if not exhausted:
+def restart_finished(path, state, restart_failed):
+    restart = []
+    for key, attempts in state.items():
+        refresh_attempt(key, attempts, path, state)
+        if not attempts:
+            continue
+        last = attempts[-1]
+        if last["exit_status"] not in (None, 0) and (
+                restart_failed or last["exit_status"] == EXIT_UNREPORTED
+                or last["ram_gb"] >= MEMORY_GB[-1]):
+            restart.append(key)
+    if not restart:
         return
-    archive = Path(tempfile.mkdtemp(prefix="exhausted-", dir=str(path.parent)))
+    archive = Path(tempfile.mkdtemp(prefix="restart-", dir=str(path.parent)))
     shutil.copy2(path, archive / path.name)
-    for key in exhausted:
+    for key in restart:
         for attempt in state[key]:
             log = Path(attempt["log"])
             if log.is_file():
                 shutil.copy2(log, archive / log.name)
         state[key] = []
     save_state(path, state)
-    print(f"Restarting {len(exhausted)} exhausted ranges. Previous attempts are in {archive}.", flush=True)
+    print(f"Restarting {len(restart)} ranges. Previous attempts are in {archive}.", flush=True)
 
 
 def main():
     import fcntl
 
     parser = ArgumentParser(description=__doc__)
-    parser.add_argument("--retry-exhausted", action="store_true",
-                        help="Restart ranges that have already failed at 64 GB")
+    restart_options = parser.add_mutually_exclusive_group()
+    restart_options.add_argument("--retry-exhausted", action="store_true",
+                                 help="Restart failed 64 GB ranges and finished ranges without an exit status")
+    restart_options.add_argument("--restart-failed", action="store_true",
+                                 help="Restart all finished ranges without a successful exit")
     args = parser.parse_args()
     root = Path.cwd()
     if not (root / "submit.pbs").is_file():
@@ -171,8 +186,8 @@ def main():
                 raise RuntimeError(f"Submission for {key} is unresolved in {path}. Check PBS for the job "
                                    "before recording its ID or removing the pending attempt.")
         require_history()
-        if args.retry_exhausted:
-            retry_exhausted(path, state)
+        if args.retry_exhausted or args.restart_failed:
+            restart_finished(path, state, args.restart_failed)
         return monitor(root, path, state)
 
 
