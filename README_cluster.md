@@ -1,62 +1,87 @@
-# Pauli entropy: Colab -> GitHub -> cluster -> GitHub
+# Pauli entropy on a PBS cluster
 
-1. Edit/run `pauli_combined_entropy.ipynb` in Colab. Add `GITHUB_TOKEN` to
-   Colab Secrets, grant the notebook access, and give the token Contents: write
-   permission for `CatUwUKitty/pauliEntropy`. Create the repository first.
-2. Run the final exporter cell. It saves the current notebook (including outputs),
-   `run_cluster.py`, `submit.pbs`, `requirements.txt`, `push_results.py`, this guide,
-   and existing CSV/PNG results under `pauli_entropy_results/`. Existing GitHub
-   result files are preserved; set OVERWRITE_GITHUB_RESULTS=True in the exporter
-   only when you intend to replace them with the Colab versions.
-   You can run the exporter alone without repeating the sweeps; it uses notebook
-   source settings. If needed, set EXPORT_RESULTS_DIR to your saved results folder.
-3. On the cluster, clone once or update your existing checkout:
+`pauli_combined_entropy.ipynb` contains the scaled collision solver and the
+bracketed min-entropy solver. `run_cluster.py` executes those solver cells
+from the same notebook. The two CSVs in `pauli_entropy_results/` seed a new
+run. Working checkpoints and plots default to `results/`.
 
-   ```bash
-   git clone --branch main https://github.com/CatUwUKitty/pauliEntropy.git
-   cd pauliEntropy
-   # For later exports, from this checkout:
-   git pull --ff-only origin main
-   ```
+## Prepare the cluster environment
 
-4. Review `submit.pbs`: project/queue/resources, Python module, virtual environment,
-   and MOSEK license path are copied from the Werner setup. Create the virtual
-   environment once if necessary (`python3 -m venv ~/myenv`, using the cluster's
-   Python module). Dependencies are installed by the PBS job. Keep the MOSEK
-   license on the cluster, outside this repository.
+Clone or pull this repository on the cluster, then open a terminal at the
+repository root.
+The launcher inherits the project, queue, CPU and memory settings from the
+previous PBS export. Check those directives against the cluster allocation.
 
-   ```bash
-   qsub submit.pbs
-   # Or, with dependencies installed in your active environment:
-   python run_cluster.py --p 0.05 --collision-epsilon 0.001 --n 1 2 3 --solver CLARABEL
-   python run_cluster.py --help
-   ```
+Set up the Python environment on the cluster before submitting a job. The
+commands below use the Python module and virtual environment from the
+existing cluster setup. Create the virtual environment if needed.
 
-   The runner uses the notebook's saved parameters unless overridden. Changing
-   `--collision-epsilon` also changes the min-entropy squared radius; use
-   `--min-entropy-epsilon` for an independent override. It excludes Colab setup,
-   plots, baseline-validation runs, and the exporter. Existing successful CSV
-   checkpoints are reused when RESUME is enabled in the notebook or via `--resume`.
-   Failed points are retried; a run with errors exits nonzero.
+```bash
+source /app1/ebenv Python-3.10.4
+python -m venv ~/myenv
+source ~/myenv/bin/activate
+python -m pip install -r requirements.txt
+```
 
-5. After the job completes, push the data from the cluster checkout:
+Put the cluster's MOSEK license at `~/mosek/mosek.lic`, or set
+`MOSEKLM_LICENSE_FILE` to its location before starting Python. To override
+it for a PBS job, use `qsub -v MOSEKLM_LICENSE_FILE=/path/to/mosek.lic submit.pbs`.
+Keep the license outside the repository.
 
-   ```bash
-   git config user.name CatUwUKitty
-   git config user.email CatUwUKitty@users.noreply.github.com
-   python push_results.py
-   # If you chose a custom output folder inside this checkout:
-   python push_results.py --results-dir my_results
-   ```
+## Run a test and submit
 
-   Configure Git authentication on the cluster separately (SSH or a credential
-   helper). The exporter does not save the Colab token. The upload helper stages
-   only CSV/PNG results and requires other staged changes to be resolved first.
-   If Git rejects a push because the remote advanced, reconcile it with
-   `git pull --rebase origin main`, then rerun the upload helper.
-   Do not push results while a job is still updating checkpoint files.
-   Pull the repository again to bring the results back to your other machines.
+With the environment active, run a small licensed test:
 
-The exporter generates files before contacting GitHub and never submits a job.
-Set `PUSH_TO_GITHUB = False` to export locally. Solver settings and numerical
-formulations remain in the notebook; edit them there and export again.
+```bash
+export MOSEKLM_LICENSE_FILE="$HOME/mosek/mosek.lic"
+python run_cluster.py --n 1 2 --collision-epsilon 0 0.01 --output-dir results/smoke
+```
+
+The default PBS job evaluates all seven saved smoothing settings at
+`n=250, 500, 750, 1000`:
+
+```bash
+qsub submit.pbs
+```
+
+For a dense sweep, request the inclusive upper copy count and a wall time
+allowed by your queue:
+
+```bash
+qsub -l walltime=48:00:00 -v PAULI_MAX_N=1000 submit.pbs
+```
+
+The dense run starts at `n=1` by default, so it also refreshes older collision
+values in the selected grid. Use `PAULI_MIN_N` to submit an inclusive slice
+with `PAULI_MAX_N`. The wall time is an allocation example. Measure the
+sample job on the cluster before sizing a dense run. The pilot at `n=1000`
+is the largest tested range for this numerical implementation.
+
+For a direct min-entropy sweep or other selections, use the runner:
+
+```bash
+python run_cluster.py --max-n 1000 --calculations min_entropy
+python run_cluster.py --n 250 500 --collision-epsilon 1e-6 0.1
+python run_cluster.py --help
+```
+
+## Resume and plot
+
+Submit the same job again to resume. The runner reuses checkpoints with the
+same parameters, solver and tolerance. It recomputes requested collision rows
+from the older formulation and retries failed, inaccurate or flagged rows.
+Each solve is written to the working CSV before moving to the next case.
+Use one job per working output directory. For concurrent jobs, assign
+different directories with `--output-dir` or `PAULI_OUTPUT_DIR`.
+
+Open the notebook from the repository root and run all cells to plot saved
+results. It prefers the working CSVs in `results/` when present, then falls
+back to the bundled checkpoints. A difference point needs both entropies at
+the same `p`, `epsilon` and `n`. For plotting results on another machine,
+copy the working CSVs to that checkout's `results/` folder. To start a
+cluster job from newer local checkpoints, copy `collision_results.csv` and
+`min_entropy_results.csv` into the cluster checkout's `results/` before
+submitting. Otherwise the runner starts from the checked-in seed CSVs.
+
+After a job finishes, use `python push_results.py --results-dir results`
+to publish its CSVs and generated plots from the cluster checkout.

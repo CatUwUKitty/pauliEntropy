@@ -2,20 +2,27 @@
 #PBS -P Entropy
 #PBS -q parallel
 #PBS -l select=1:ncpus=12:mem=32gb
-#PBS -l walltime=100:00:00
+#PBS -l walltime=08:00:00
 #PBS -j oe
 #PBS -N PauliEntropy
 
 set -eo pipefail
-cd "${PBS_O_WORKDIR}"
-export MALLOC_ARENA_MAX=12
-export OMP_NUM_THREADS=12
-export OPENBLAS_NUM_THREADS=12
-export MKL_NUM_THREADS=12
-export NUMEXPR_NUM_THREADS=12
+cd "${PBS_O_WORKDIR:?Submit from the repository root with qsub}"
+
 source /app1/ebenv Python-3.10.4
 unset PYTHONPATH
-source "${HOME}/myenv/bin/activate"
-python -m pip install -r requirements.txt
-export MOSEKLM_LICENSE_FILE="${HOME}/mosek/mosek.lic"
-exec python -u run_cluster.py 
+source "${PAULI_VENV:-${HOME}/myenv}/bin/activate"
+
+export MOSEKLM_LICENSE_FILE="${MOSEKLM_LICENSE_FILE:-${HOME}/mosek/mosek.lic}"
+export PAULI_MOSEK_THREADS="${PAULI_MOSEK_THREADS:-${NCPUS:-12}}"
+export OPENBLAS_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+export NUMEXPR_NUM_THREADS=1
+
+if [[ -n "${PAULI_MAX_N:-}" ]]; then
+    counts=(--min-n "${PAULI_MIN_N:-1}" --max-n "$PAULI_MAX_N")
+else
+    counts=(--n 250 500 750 1000)
+fi
+
+exec python -u run_cluster.py "${counts[@]}"
