@@ -108,7 +108,8 @@ def main():
         if ns["COLLISION_SOLVER"] == "MOSEK":
             cp = ns["cp"]
             probe = cp.Variable(nonneg=True)
-            cp.Problem(cp.Maximize(probe), [probe <= 1]).solve(solver="MOSEK")
+            cp.Problem(cp.Maximize(probe), [probe <= 1]).solve(
+                solver="MOSEK", canon_backend=cp.SCIPY_CANON_BACKEND)
 
     reference = ns["pd"].DataFrame([
         dict(p=p, H_vN_bits=ns["pauli_conditional_entropy"](p),

@@ -4,9 +4,12 @@
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
+import tempfile
 import time
+from argparse import ArgumentParser
 from pathlib import Path
 
 
@@ -120,9 +123,31 @@ def monitor(root, path, state):
     return int(bool(failed))
 
 
+def retry_exhausted(path, state):
+    exhausted = [key for key, attempts in state.items()
+                 if attempts and attempts[-1]["ram_gb"] >= MEMORY_GB[-1]
+                 and attempts[-1]["exit_status"] not in (None, 0)]
+    if not exhausted:
+        return
+    archive = Path(tempfile.mkdtemp(prefix="exhausted-", dir=str(path.parent)))
+    shutil.copy2(path, archive / path.name)
+    for key in exhausted:
+        for attempt in state[key]:
+            log = Path(attempt["log"])
+            if log.is_file():
+                shutil.copy2(log, archive / log.name)
+        state[key] = []
+    save_state(path, state)
+    print(f"Restarting {len(exhausted)} exhausted ranges. Previous attempts are in {archive}.", flush=True)
+
+
 def main():
     import fcntl
 
+    parser = ArgumentParser(description=__doc__)
+    parser.add_argument("--retry-exhausted", action="store_true",
+                        help="Restart ranges that have already failed at 64 GB")
+    args = parser.parse_args()
     root = Path.cwd()
     if not (root / "submit.pbs").is_file():
         raise RuntimeError("Run from the cluster's pauliEntropy checkout containing submit.pbs.")
@@ -146,6 +171,8 @@ def main():
                 raise RuntimeError(f"Submission for {key} is unresolved in {path}. Check PBS for the job "
                                    "before recording its ID or removing the pending attempt.")
         require_history()
+        if args.retry_exhausted:
+            retry_exhausted(path, state)
         return monitor(root, path, state)
 
 

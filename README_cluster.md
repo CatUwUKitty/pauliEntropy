@@ -92,6 +92,12 @@ range and RAM request in that directory. Stop the controller before
 intentionally cancelling a job. An interrupted submission with an unknown job
 ID requires checking PBS before recovering the pending entry.
 
+After fixing a problem that exhausted a range's retries, stop the old
+controller and run `python3 -u submit_pauli_retries.py --retry-exhausted`.
+The flag restarts ranges that already failed at 64 GB, archives their prior
+attempt logs, and reuses their CSV checkpoints. Successful and active
+ranges keep their recorded state.
+
 Each range writes to its own `results/shards/START-END/` directory. Retries
 reuse that directory. To assemble the full sweep, take each shard's rows
 within its assigned copy-count range before merging the CSVs for plotting.
