@@ -20,7 +20,8 @@ JOB_ID = re.compile(r"[0-9]+(?:\.[\w.-]+)?(?:@[\w.-]+)?")
 
 
 def pbs(*args):
-    result = subprocess.run(args, check=False, text=True, capture_output=True, timeout=60)
+    result = subprocess.run(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                            universal_newlines=True, timeout=60)
     if result.returncode:
         detail = result.stderr.strip() or result.stdout.strip()
         raise RuntimeError(f"{' '.join(args)} failed with status {result.returncode}. {detail}")
