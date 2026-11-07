@@ -65,6 +65,36 @@ python run_cluster.py --n 250 500 --collision-epsilon 1e-6 0.1
 python run_cluster.py --help
 ```
 
+## Run 1 through 1000 with automatic RAM retries
+
+On the cluster login node, pull the latest version and run the retry controller
+from the repository root. Use it in place of the manual submission loop.
+Wait for any earlier Pauli jobs for these ranges to finish before starting.
+
+```bash
+git pull --ff-only origin main
+qstat -Bf | grep job_history_enable
+python3 -u submit_pauli_retries.py
+```
+
+PBS must expose `job_history_enable = True` so the controller can read each
+finished job's exit status. The controller submits ten non-overlapping ranges,
+each with 12 cores, eight hours of walltime and an initial 20 GB request.
+A nonzero PBS exit status triggers a new attempt at 32 GB and then 64 GB.
+The queue must allow those memory requests. There is at most one active
+attempt per range.
+
+Run the controller in a persistent terminal on the login node if your site
+allows it. Running the same command again resumes monitoring from
+`results/logs/auto-retry/state.json`. Each attempt has a log named for its
+range and RAM request in that directory. Stop the controller before
+intentionally cancelling a job. An interrupted submission with an unknown job
+ID requires checking PBS before recovering the pending entry.
+
+Each range writes to its own `results/shards/START-END/` directory. Retries
+reuse that directory. To assemble the full sweep, take each shard's rows
+within its assigned copy-count range before merging the CSVs for plotting.
+
 ## Resume and plot
 
 Submit the same job again to resume. The runner reuses checkpoints with the
