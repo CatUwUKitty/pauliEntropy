@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Submit the ten Pauli ranges and retry failed PBS jobs at 20, 32, and 64 GB."""
+"""Submit the ten Pauli ranges at 32 GB and retry failed PBS jobs at 64 GB."""
 
 import json
 import os
@@ -14,7 +14,7 @@ RANGES = (
     (1, 570), (571, 680), (681, 750), (751, 805), (806, 850),
     (851, 890), (891, 920), (921, 950), (951, 975), (976, 1000),
 )
-MEMORY_GB = (20, 32, 64)
+MEMORY_GB = (32, 64)
 POLL_SECONDS = 60
 JOB_ID = re.compile(r"[0-9]+(?:\.[\w.-]+)?(?:@[\w.-]+)?")
 
@@ -57,8 +57,7 @@ def finished_status(job_id):
     return int(job["Exit_status"])
 
 
-def submit_attempt(root, start, end, attempts, path, state):
-    ram = MEMORY_GB[len(attempts)]
+def submit_attempt(root, start, end, ram, attempts, path, state):
     name = f"Pauli_{start}_{end}"
     output_dir = root / "results" / "shards" / f"{start}-{end}"
     log_path = root / "results" / "logs" / "auto-retry" / f"{name}_{ram}gb.log"
@@ -101,9 +100,13 @@ def monitor(root, path, state):
                 save_state(path, state)
                 print(f"{key}: {attempt['job_id']} exited with status {code}", flush=True)
 
-            if attempts and (attempts[-1]["exit_status"] == 0 or len(attempts) == len(MEMORY_GB)):
+            if attempts and attempts[-1]["exit_status"] == 0:
                 continue
-            submit_attempt(root, start, end, attempts, path, state)
+            previous_ram = attempts[-1]["ram_gb"] if attempts else 0
+            ram = next((candidate for candidate in MEMORY_GB if candidate > previous_ram), None)
+            if ram is None:
+                continue
+            submit_attempt(root, start, end, ram, attempts, path, state)
             active = True
 
         if not active:

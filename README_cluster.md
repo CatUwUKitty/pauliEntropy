@@ -79,10 +79,11 @@ python3 -u submit_pauli_retries.py
 
 PBS must expose `job_history_enable = True` so the controller can read each
 finished job's exit status. The controller submits ten non-overlapping ranges,
-each with 12 cores, eight hours of walltime and an initial 20 GB request.
-A nonzero PBS exit status triggers a new attempt at 32 GB and then 64 GB.
-The queue must allow those memory requests. There is at most one active
-attempt per range.
+each with 12 cores, eight hours of walltime and an initial 32 GB request.
+A nonzero PBS exit status triggers a retry at 64 GB. The queue must allow
+both memory requests. There is at most one active attempt per range.
+Existing 20 GB attempts are monitored through completion. If one fails,
+its next attempt requests 32 GB.
 
 Run the controller in a persistent terminal on the login node if your site
 allows it. Running the same command again resumes monitoring from
