@@ -28,11 +28,13 @@ Put the cluster's MOSEK license at `~/mosek/mosek.lic`, or set
 it for a PBS job, use `qsub -v MOSEKLM_LICENSE_FILE=/path/to/mosek.lic submit.pbs`.
 Keep the license outside the repository.
 
-The PBS launcher uses the installed virtual environment's Python directly
-when a compute node is missing the cluster module setup files. The
-environment must be on a filesystem visible to that node. If the fallback
-reports an interpreter or shared-library error, include the compute node
-and the error when contacting cluster support.
+When a compute node is missing the cluster module setup files, the PBS
+launcher uses the installed virtual environment's Python directly. It
+looks for the Python 3.10 shared library beside the base installation
+recorded in `pyvenv.cfg` or referenced by the interpreter symlink. The
+environment and base installation must be visible to the node. If it
+still reports a shared-library error, include the compute node and the
+error when contacting cluster support.
 
 ## Run a test and submit
 

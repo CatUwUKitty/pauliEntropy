@@ -9,18 +9,38 @@
 set -eo pipefail
 cd "${PBS_O_WORKDIR:?Submit from the repository root with qsub}"
 
-if [[ -r /app1/ebenv && -r /etc/profile.d/rec_modules.sh ]]; then
-    source /app1/ebenv Python-3.10.4
-else
-    printf 'Python module initialization is unavailable on %s. Using the existing Pauli virtual environment.\n' "${HOSTNAME:-this node}" >&2
-fi
-unset PYTHONPATH
-
-pauli_python="${PAULI_VENV:-${HOME}/myenv}/bin/python"
+pauli_venv="${PAULI_VENV:-${HOME}/myenv}"
+pauli_python="$pauli_venv/bin/python"
 if [[ ! -x "$pauli_python" ]]; then
     printf 'Pauli virtual environment interpreter is unavailable on %s: %s\n' "${HOSTNAME:-this node}" "$pauli_python" >&2
     exit 1
 fi
+
+if [[ -r /app1/ebenv && -r /etc/profile.d/rec_modules.sh ]]; then
+    source /app1/ebenv Python-3.10.4
+else
+    printf 'Python module initialization is unavailable on %s. Using the existing Pauli virtual environment.\n' "${HOSTNAME:-this node}" >&2
+
+    # The module normally supplies the shared-library directory for this Python.
+    # A venv may contain either a symlink or a copy of the base interpreter.
+    pauli_python_home=
+    if [[ -r "$pauli_venv/pyvenv.cfg" ]]; then
+        pauli_python_home=$(sed -n 's/^home[[:space:]]*=[[:space:]]*//p' "$pauli_venv/pyvenv.cfg")
+    fi
+    pauli_real_python=$(readlink -f -- "$pauli_python")
+    for pauli_bin in "$pauli_python_home" "${pauli_real_python%/*}"; do
+        [[ -n "$pauli_bin" ]] || continue
+        pauli_prefix=$(dirname -- "${pauli_bin%/}")
+        for pauli_lib in "$pauli_prefix/lib" "$pauli_prefix/lib64"; do
+            if [[ -r "$pauli_lib/libpython3.10.so.1.0" ]]; then
+                export LD_LIBRARY_PATH="$pauli_lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+                printf 'Using Python shared libraries from %s\n' "$pauli_lib" >&2
+                break 2
+            fi
+        done
+    done
+fi
+unset PYTHONPATH
 
 export MOSEKLM_LICENSE_FILE="${MOSEKLM_LICENSE_FILE:-${HOME}/mosek/mosek.lic}"
 export PAULI_MOSEK_THREADS="${PAULI_MOSEK_THREADS:-${NCPUS:-12}}"
