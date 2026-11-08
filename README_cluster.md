@@ -108,6 +108,41 @@ Each range writes to its own `results/shards/START-END/` directory. Retries
 reuse that directory. To assemble the full sweep, take each shard's rows
 within its assigned copy-count range before merging the CSVs for plotting.
 
+## Sweep p = 0.01, 0.10, and 0.20
+
+From the cluster checkout, pull the latest version and run the two
+high-memory pilot jobs. Each runs both entropies at n = 1000 and
+epsilon = 0.1. The queue must accept a 96 GB request for these jobs.
+
+```bash
+git pull --ff-only origin main
+python3 -u submit_pauli_retries.py --batch p-pilot
+```
+
+After the pilots finish successfully, submit the full sweep. Run the
+controller in a persistent session on the login node.
+
+```bash
+python3 -u submit_pauli_retries.py --batch p-sweep
+```
+
+The sweep covers every n from 1 through 1000 for both entropies and all
+seven smoothing settings. It submits one job at p = 0.01, eleven at
+p = 0.10, and fifteen at p = 0.20. The ranges were balanced using
+timings from the completed p = 0.05 sweep. The p = 0.01 job requests
+four hours and the other jobs request eight hours.
+
+Each range starts at 32, 64, or 96 GB according to its largest retained
+collision matrix. Failed 32 GB jobs retry at 64 GB, and failed jobs that
+start at 64 GB retry at 96 GB. A failed attempt at the last tier needs
+review. PBS controls how many of the 27 jobs run at a time.
+
+The pilot and sweep keep independent state. Rerun the same command to
+resume its batch. Sweep logs and state are in `results/p-sweep/logs/auto-retry/`,
+and CSV checkpoints are in `results/p-sweep/shards/pVALUE/START-END/`.
+For plotting, select the assigned p and copy-count range from each shard
+before joining the collision and min-entropy CSVs.
+
 ## Resume and plot
 
 Submit the same job again to resume. The runner reuses checkpoints with the

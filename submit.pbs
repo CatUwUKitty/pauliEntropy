@@ -25,4 +25,11 @@ else
     counts=(--n 250 500 750 1000)
 fi
 
+if [[ -n "${PAULI_P:-}" ]]; then
+    counts+=(--p "$PAULI_P")
+fi
+if [[ -n "${PAULI_COLLISION_EPSILON:-}" ]]; then
+    counts+=(--collision-epsilon "$PAULI_COLLISION_EPSILON")
+fi
+
 exec python -u run_cluster.py "${counts[@]}"
