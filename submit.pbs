@@ -9,9 +9,18 @@
 set -eo pipefail
 cd "${PBS_O_WORKDIR:?Submit from the repository root with qsub}"
 
-source /app1/ebenv Python-3.10.4
+if [[ -r /app1/ebenv && -r /etc/profile.d/rec_modules.sh ]]; then
+    source /app1/ebenv Python-3.10.4
+else
+    printf 'Python module initialization is unavailable on %s. Using the existing Pauli virtual environment.\n' "${HOSTNAME:-this node}" >&2
+fi
 unset PYTHONPATH
-source "${PAULI_VENV:-${HOME}/myenv}/bin/activate"
+
+pauli_python="${PAULI_VENV:-${HOME}/myenv}/bin/python"
+if [[ ! -x "$pauli_python" ]]; then
+    printf 'Pauli virtual environment interpreter is unavailable on %s: %s\n' "${HOSTNAME:-this node}" "$pauli_python" >&2
+    exit 1
+fi
 
 export MOSEKLM_LICENSE_FILE="${MOSEKLM_LICENSE_FILE:-${HOME}/mosek/mosek.lic}"
 export PAULI_MOSEK_THREADS="${PAULI_MOSEK_THREADS:-${NCPUS:-12}}"
@@ -32,4 +41,4 @@ if [[ -n "${PAULI_COLLISION_EPSILON:-}" ]]; then
     counts+=(--collision-epsilon "$PAULI_COLLISION_EPSILON")
 fi
 
-exec python -u run_cluster.py "${counts[@]}"
+exec "$pauli_python" -u run_cluster.py "${counts[@]}"
