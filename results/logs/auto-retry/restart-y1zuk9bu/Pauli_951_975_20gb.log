@@ -1,0 +1,20 @@
+Available solvers: ['CLARABEL', 'MOSEK', 'OSQP', 'SCIPY', 'SCS']
+Run new sweeps: False | Retry saved collision rows: False | Run baseline validation: False
+   p  H_vN_bits  V_bits_squared  Hmin_unsmoothed_bits
+0.05   0.713603        0.857132              0.478055
+python: cvxpy/cvxcore/src/ProblemData.hpp:37: void ProblemData::init_id(int, int): Assertion `TensorV.count(new_param_id) == 0' failed.
+-bash: line 1: 28018 Aborted                 (core dumped) /var/spool/pbs/mom_priv/jobs/1036221.venus01.SC
+      ======================================================================================
+     Resource Usage on 2026-11-08 02:03:57.298616:
+     JobId: 1036221.venus01  				 Project: Entropy 
+     Submission Host: atlas8-c01 
+     Exit Status: 134
+     NCPUs Requested: 12 				 NCPUs Used: 12
+     Memory Requested: 20gb 				 Memory Used: 0b 
+     Vmem Used: 817124kb
+     CPU Time Used: 00:00:00 
+     Walltime requested: 08:00:00 			 Walltime Used: 00:00:37
+     Submit Time:  Sun Nov  8 01:58:31 2026 		 Start Time: Sun Nov  8 02:03:20 2026 
+     End Time: Sun Nov  8 02:03:57 2026 
+     Execution Nodes Used: (cnode-33-43-32:ncpus=12:mem=20971520kb)
+     ======================================================================================

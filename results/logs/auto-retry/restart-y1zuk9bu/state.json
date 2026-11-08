@@ -1,0 +1,196 @@
+{
+  "1-570": [
+    {
+      "ram_gb": 20,
+      "job_id": "1036213.venus01",
+      "exit_status": 134,
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_1_570_20gb.log"
+    },
+    {
+      "ram_gb": 32,
+      "job_id": "1036224.venus01",
+      "exit_status": 134,
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_1_570_32gb.log"
+    },
+    {
+      "ram_gb": 64,
+      "job_id": "1036233.venus01",
+      "exit_status": 271,
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_1_570_64gb.log"
+    }
+  ],
+  "571-680": [
+    {
+      "ram_gb": 20,
+      "job_id": "1036214.venus01",
+      "exit_status": 134,
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_571_680_20gb.log"
+    },
+    {
+      "ram_gb": 32,
+      "job_id": "1036225.venus01",
+      "exit_status": 134,
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_571_680_32gb.log"
+    },
+    {
+      "ram_gb": 64,
+      "job_id": "1036234.venus01",
+      "exit_status": 271,
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_571_680_64gb.log"
+    }
+  ],
+  "681-750": [
+    {
+      "ram_gb": 20,
+      "job_id": "1036215.venus01",
+      "exit_status": 1,
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_681_750_20gb.log"
+    },
+    {
+      "ram_gb": 32,
+      "job_id": "1036223.venus01",
+      "exit_status": 134,
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_681_750_32gb.log"
+    },
+    {
+      "ram_gb": 64,
+      "job_id": "1036229.venus01",
+      "exit_status": 134,
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_681_750_64gb.log"
+    }
+  ],
+  "751-805": [
+    {
+      "ram_gb": 20,
+      "job_id": "1036216.venus01",
+      "exit_status": 134,
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_751_805_20gb.log"
+    },
+    {
+      "ram_gb": 32,
+      "job_id": "1036226.venus01",
+      "exit_status": 134,
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_751_805_32gb.log"
+    },
+    {
+      "ram_gb": 64,
+      "job_id": "1036235.venus01",
+      "exit_status": 271,
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_751_805_64gb.log"
+    }
+  ],
+  "806-850": [
+    {
+      "ram_gb": 20,
+      "job_id": "1036217.venus01",
+      "exit_status": 134,
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_806_850_20gb.log"
+    },
+    {
+      "ram_gb": 32,
+      "job_id": "1036227.venus01",
+      "exit_status": 134,
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_806_850_32gb.log"
+    },
+    {
+      "ram_gb": 64,
+      "job_id": "1036236.venus01",
+      "exit_status": 271,
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_806_850_64gb.log"
+    }
+  ],
+  "851-890": [
+    {
+      "ram_gb": 20,
+      "job_id": "1036218.venus01",
+      "exit_status": 134,
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_851_890_20gb.log"
+    },
+    {
+      "ram_gb": 32,
+      "job_id": "1036228.venus01",
+      "exit_status": 134,
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_851_890_32gb.log"
+    },
+    {
+      "ram_gb": 64,
+      "job_id": "1036237.venus01",
+      "exit_status": 265,
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_851_890_64gb.log"
+    }
+  ],
+  "891-920": [
+    {
+      "ram_gb": 20,
+      "job_id": "1036219.venus01",
+      "exit_status": 134,
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_891_920_20gb.log"
+    },
+    {
+      "ram_gb": 32,
+      "job_id": "1036230.venus01",
+      "exit_status": 134,
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_891_920_32gb.log"
+    },
+    {
+      "ram_gb": 64,
+      "job_id": "1036238.venus01",
+      "exit_status": "unreported",
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_891_920_64gb.log"
+    }
+  ],
+  "921-950": [
+    {
+      "ram_gb": 20,
+      "job_id": "1036220.venus01",
+      "exit_status": 134,
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_921_950_20gb.log"
+    },
+    {
+      "ram_gb": 32,
+      "job_id": "1036231.venus01",
+      "exit_status": 134,
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_921_950_32gb.log"
+    },
+    {
+      "ram_gb": 64,
+      "job_id": "1036239.venus01",
+      "exit_status": "unreported",
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_921_950_64gb.log"
+    }
+  ],
+  "951-975": [
+    {
+      "ram_gb": 20,
+      "job_id": "1036221.venus01",
+      "exit_status": 134,
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_951_975_20gb.log"
+    },
+    {
+      "ram_gb": 32,
+      "job_id": "1036232.venus01",
+      "exit_status": 134,
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_951_975_32gb.log"
+    },
+    {
+      "ram_gb": 64,
+      "job_id": "1036240.venus01",
+      "exit_status": "unreported",
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_951_975_64gb.log"
+    }
+  ],
+  "976-1000": [
+    {
+      "ram_gb": 20,
+      "job_id": "1036222.venus01",
+      "exit_status": 134,
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_976_1000_20gb.log"
+    },
+    {
+      "ram_gb": 32,
+      "job_id": "1036241.venus01",
+      "exit_status": "unreported",
+      "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_976_1000_32gb.log"
+    }
+  ]
+}

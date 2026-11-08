@@ -1,0 +1,28 @@
+Available solvers: ['CLARABEL', 'MOSEK', 'OSQP', 'SCIPY', 'SCS']
+Run new sweeps: False | Retry saved collision rows: False | Run baseline validation: False
+   p  H_vN_bits  V_bits_squared  Hmin_unsmoothed_bits
+0.05   0.713603        0.857132              0.478055
+Python packages: CVXPY 1.7.5, NumPy 2.2.6
+Output: /home/svu/e1398082/pauli/results/shards/571-680
+[1/770] collision: solving {'p': 0.05, 'epsilon': 0.1, 'n': 571, 'solver': 'MOSEK', 'tol': 1e-05}
+[2/770] collision: solving {'p': 0.05, 'epsilon': 0.01, 'n': 571, 'solver': 'MOSEK', 'tol': 1e-05}
+[3/770] collision: solving {'p': 0.05, 'epsilon': 0.001, 'n': 571, 'solver': 'MOSEK', 'tol': 1e-05}
+[4/770] collision: solving {'p': 0.05, 'epsilon': 0.0001, 'n': 571, 'solver': 'MOSEK', 'tol': 1e-05}
+[5/770] collision: solving {'p': 0.05, 'epsilon': 1e-05, 'n': 571, 'solver': 'MOSEK', 'tol': 1e-05}
+[6/770] collision: solving {'p': 0.05, 'epsilon': 1e-06, 'n': 571, 'solver': 'MOSEK', 'tol': 1e-05}
+[7/770] collision: solving {'p': 0.05, 'epsilon': 0.0, 'n': 571, 'solver': 'MOSEK', 'tol': 1e-05}
+[8/770] collision: solving {'p': 0.05, 'epsilon': 0.1, 'n': 572, 'solver': 'MOSEK', 'tol': 1e-05}
+      ======================================================================================
+     Resource Usage on 2026-11-08 02:15:11.736106:
+     JobId: 1036234.venus01  				 Project: Entropy 
+     Submission Host: atlas8-c01 
+     Exit Status: 271
+     NCPUs Requested: 12 				 NCPUs Used: 12
+     Memory Requested: 64gb 				 Memory Used: 3525104kb 
+     Vmem Used: 11428904kb
+     CPU Time Used: 00:02:28 
+     Walltime requested: 08:00:00 			 Walltime Used: 00:02:43
+     Submit Time:  Sun Nov  8 02:12:25 2026 		 Start Time: Sun Nov  8 02:14:53 2026 
+     End Time: Sun Nov  8 02:15:11 2026 
+     Execution Nodes Used: (cnode-33-43-32:ncpus=12:mem=67108864kb)
+     ======================================================================================

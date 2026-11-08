@@ -1,0 +1,21 @@
+Available solvers: ['CLARABEL', 'MOSEK', 'OSQP', 'SCIPY', 'SCS']
+Run new sweeps: False | Retry saved collision rows: False | Run baseline validation: False
+   p  H_vN_bits  V_bits_squared  Hmin_unsmoothed_bits
+0.05   0.713603        0.857132              0.478055
+Python packages: CVXPY 1.7.5, NumPy 2.2.6
+Output: /home/svu/e1398082/pauli/results/shards/806-850
+[1/315] collision: solving {'p': 0.05, 'epsilon': 0.1, 'n': 806, 'solver': 'MOSEK', 'tol': 1e-05}
+      ======================================================================================
+     Resource Usage on 2026-11-08 02:15:14.824620:
+     JobId: 1036236.venus01  				 Project: Entropy 
+     Submission Host: atlas8-c01 
+     Exit Status: 271
+     NCPUs Requested: 12 				 NCPUs Used: 12
+     Memory Requested: 64gb 				 Memory Used: 511648kb 
+     Vmem Used: 3269444kb
+     CPU Time Used: 00:00:02 
+     Walltime requested: 08:00:00 			 Walltime Used: 00:02:46
+     Submit Time:  Sun Nov  8 02:12:26 2026 		 Start Time: Sun Nov  8 02:14:55 2026 
+     End Time: Sun Nov  8 02:15:14 2026 
+     Execution Nodes Used: (cnode-33-43-37:ncpus=12:mem=67108864kb)
+     ======================================================================================

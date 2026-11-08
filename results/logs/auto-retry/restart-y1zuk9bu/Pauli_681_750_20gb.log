@@ -1,0 +1,15 @@
+/app1/ebenv: line 12: /etc/profile.d/rec_modules.sh: No such file or directory
+      ======================================================================================
+     Resource Usage on 2026-11-08 01:58:35.817126:
+     JobId: 1036215.venus01  				 Project: Entropy 
+     Submission Host: atlas8-c01 
+     Exit Status: 1
+     NCPUs Requested: 12 				 NCPUs Used: 12
+     Memory Requested: 20gb 				 Memory Used: 0b 
+     Vmem Used: 0kb
+     CPU Time Used: 00:00:00 
+     Walltime requested: 08:00:00 			 Walltime Used: 00:00:01
+     Submit Time:  Sun Nov  8 01:58:31 2026 		 Start Time: Sun Nov  8 01:58:34 2026 
+     End Time: Sun Nov  8 01:58:35 2026 
+     Execution Nodes Used: (cnode-33-43-20:ncpus=12:mem=20971520kb)
+     ======================================================================================

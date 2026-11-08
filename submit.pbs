@@ -2,7 +2,7 @@
 #PBS -P Entropy
 #PBS -q parallel
 #PBS -l select=1:ncpus=12:mem=32gb
-#PBS -l walltime=08:00:00
+#PBS -l walltime=48:00:00
 #PBS -j oe
 #PBS -N PauliEntropy
 
