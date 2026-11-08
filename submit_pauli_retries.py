@@ -18,37 +18,37 @@ BASELINE_RANGES = (
     (1, 570), (571, 680), (681, 750), (751, 805), (806, 850),
     (851, 890), (891, 920), (921, 950), (951, 975), (976, 1000),
 )
-# Each pair is the inclusive end of a range and its initial RAM in GB.
+# Each pair is the inclusive end of a range and its maximum RAM in GB.
 # Range widths are balanced using the measured p=0.05 solve times.
 P_SWEEP_ENDS = (
-    ("0.01", "04:00:00", ((1000, 32),)),
+    ("0.01", "04:00:00", ((1000, 64),)),
     ("0.10", "08:00:00", (
-        (557, 32), (663, 32), (735, 32), (794, 64), (840, 64), (874, 64),
-        (902, 64), (932, 64), (956, 96), (979, 96), (1000, 96),
+        (557, 64), (663, 64), (735, 64), (794, 96), (840, 96), (874, 96),
+        (902, 96), (932, 96), (956, 96), (979, 96), (1000, 96),
     )),
     ("0.20", "08:00:00", (
-        (455, 32), (571, 32), (644, 32), (694, 32), (743, 64), (787, 64),
-        (823, 64), (855, 64), (879, 96), (900, 96), (924, 96), (947, 96),
+        (455, 64), (571, 64), (644, 64), (694, 64), (743, 96), (787, 96),
+        (823, 96), (855, 96), (879, 96), (900, 96), (924, 96), (947, 96),
         (964, 96), (983, 96), (1000, 96),
     )),
 )
-MEMORY_TIERS = {32: (32, 64), 64: (64, 96), 96: (96,)}
+MEMORY_TIERS = {64: (32, 64), 96: (32, 64, 96)}
 Job = namedtuple("Job", "key name start end p epsilon walltime memory_gb")
 POLL_SECONDS = 60
 JOB_ID = re.compile(r"[0-9]+(?:\.[\w.-]+)?(?:@[\w.-]+)?")
 EXIT_UNREPORTED = "unreported"
 
 
-def p_job(p, start, end, walltime, ram, epsilon=None):
+def p_job(p, start, end, walltime, memory_limit, epsilon=None):
     label = f"{100 * float(p):02.0f}"
     return Job(f"p{p}/{start}-{end}", f"P{label}_{start}_{end}", start, end,
-               p, epsilon, walltime, MEMORY_TIERS[ram])
+               p, epsilon, walltime, MEMORY_TIERS[memory_limit])
 
 
 def batch_jobs(batch):
     if batch == "baseline":
         return [Job(f"{start}-{end}", f"Pauli_{start}_{end}", start, end,
-                    None, None, "08:00:00", MEMORY_TIERS[32])
+                    None, None, "08:00:00", MEMORY_TIERS[64])
                 for start, end in BASELINE_RANGES]
     if batch == "p-pilot":
         return [p_job(p, 1000, 1000, "01:00:00", 96, epsilon="0.1")
@@ -57,8 +57,8 @@ def batch_jobs(batch):
     jobs = []
     for p, walltime, ranges in P_SWEEP_ENDS:
         start = 1
-        for end, ram in ranges:
-            jobs.append(p_job(p, start, end, walltime, ram))
+        for end, memory_limit in ranges:
+            jobs.append(p_job(p, start, end, walltime, memory_limit))
             start = end + 1
     return jobs
 

@@ -118,7 +118,7 @@ within its assigned copy-count range before merging the CSVs for plotting.
 
 From the cluster checkout, pull the latest version and run the two
 high-memory pilot jobs. Each runs both entropies at n = 1000 and
-epsilon = 0.1. The queue must accept a 96 GB request for these jobs.
+epsilon = 0.1. Both start at 32 GB and can retry at 64 GB and 96 GB.
 
 ```bash
 git pull --ff-only origin main
@@ -138,10 +138,10 @@ p = 0.10, and fifteen at p = 0.20. The ranges were balanced using
 timings from the completed p = 0.05 sweep. The p = 0.01 job requests
 four hours and the other jobs request eight hours.
 
-Each range starts at 32, 64, or 96 GB according to its largest retained
-collision matrix. Failed 32 GB jobs retry at 64 GB, and failed jobs that
-start at 64 GB retry at 96 GB. A failed attempt at the last tier needs
-review. PBS controls how many of the 27 jobs run at a time.
+Each range starts at 32 GB. Failed attempts retry at 64 GB. Ranges with
+larger retained collision matrices can retry once more at 96 GB if the
+queue allows it. A failed attempt at the last tier needs review. PBS
+controls how many of the 27 jobs run at a time.
 
 The pilot and sweep keep independent state. Rerun the same command to
 resume its batch. Sweep logs and state are in `results/p-sweep/logs/auto-retry/`,
