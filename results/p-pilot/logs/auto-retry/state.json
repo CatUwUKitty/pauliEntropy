@@ -1,0 +1,18 @@
+{
+  "p0.10/1000-1000": [
+    {
+      "ram_gb": 96,
+      "job_id": "1036540.venus01",
+      "exit_status": 0,
+      "log": "/home/svu/e1398082/pauli/results/p-pilot/logs/auto-retry/P10_1000_1000_96gb.log"
+    }
+  ],
+  "p0.20/1000-1000": [
+    {
+      "ram_gb": 96,
+      "job_id": "1036545.venus01",
+      "exit_status": null,
+      "log": "/home/svu/e1398082/pauli/results/p-pilot/logs/auto-retry/P20_1000_1000_96gb.log"
+    }
+  ]
+}

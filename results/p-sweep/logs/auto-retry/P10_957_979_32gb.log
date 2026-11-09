@@ -1,0 +1,31 @@
+Available solvers: ['CLARABEL', 'MOSEK', 'OSQP', 'SCIPY', 'SCS']
+Run new sweeps: False | Retry saved collision rows: False | Run baseline validation: False
+   p  H_vN_bits  V_bits_squared  Hmin_unsmoothed_bits
+0.05   0.713603        0.857132              0.478055
+Python packages: CVXPY 1.7.5, NumPy 2.2.6
+Output: /home/svu/e1398082/pauli/results/p-sweep/shards/p0.10/957-979
+[1/161] collision: solving {'p': 0.1, 'epsilon': 0.1, 'n': 957, 'solver': 'MOSEK', 'tol': 1e-05}
+[2/161] collision: solving {'p': 0.1, 'epsilon': 0.01, 'n': 957, 'solver': 'MOSEK', 'tol': 1e-05}
+[3/161] collision: solving {'p': 0.1, 'epsilon': 0.001, 'n': 957, 'solver': 'MOSEK', 'tol': 1e-05}
+[4/161] collision: solving {'p': 0.1, 'epsilon': 0.0001, 'n': 957, 'solver': 'MOSEK', 'tol': 1e-05}
+[5/161] collision: solving {'p': 0.1, 'epsilon': 1e-05, 'n': 957, 'solver': 'MOSEK', 'tol': 1e-05}
+[6/161] collision: solving {'p': 0.1, 'epsilon': 1e-06, 'n': 957, 'solver': 'MOSEK', 'tol': 1e-05}
+[7/161] collision: solving {'p': 0.1, 'epsilon': 0.0, 'n': 957, 'solver': 'MOSEK', 'tol': 1e-05}
+[8/161] collision: solving {'p': 0.1, 'epsilon': 0.1, 'n': 958, 'solver': 'MOSEK', 'tol': 1e-05}
+-bash: line 1: 50897 Killed                  /var/spool/pbs/mom_priv/jobs/1036635.venus01.SC
+      ======================================================================================
+     Resource Usage on 2026-11-08 20:49:21.342111:
+     JobId: 1036635.venus01  				 Project: Entropy 
+     Submission Host: atlas8-c01 
+     Exit Status: 137
+     NCPUs Requested: 12 				 NCPUs Used: 12
+     Memory Requested: 32gb 				 Memory Used: 28337568kb 
+     Vmem Used: 65309008kb
+     CPU Time Used: 02:00:12 
+     Walltime requested: 08:00:00 			 Walltime Used: 00:20:01
+     Submit Time:  Sun Nov  8 18:30:11 2026 		 Start Time: Sun Nov  8 20:29:20 2026 
+     End Time: Sun Nov  8 20:49:21 2026 
+     Execution Nodes Used: (cnode-33-43-28:ncpus=12:mem=33554432kb)
+     ======================================================================================
+Cgroup mem limit exceeded: Task in /pbs_jobs.service/jobid/1036635.venus01 killed as a result of limit of /pbs_jobs.service/jobid/1036635.venus01
+

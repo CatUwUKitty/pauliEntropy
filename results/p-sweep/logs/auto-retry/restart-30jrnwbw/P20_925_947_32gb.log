@@ -1,0 +1,16 @@
+Python module initialization is unavailable on cnode-33-43-20. Using the existing Pauli virtual environment.
+/home/svu/e1398082/myenv/bin/python: error while loading shared libraries: libpython3.10.so.1.0: cannot open shared object file: No such file or directory
+      ======================================================================================
+     Resource Usage on 2026-11-08 18:20:29.210316:
+     JobId: 1036585.venus01  				 Project: Entropy 
+     Submission Host: atlas8-c01 
+     Exit Status: 127
+     NCPUs Requested: 12 				 NCPUs Used: 12
+     Memory Requested: 32gb 				 Memory Used: 0b 
+     Vmem Used: 0kb
+     CPU Time Used: 00:00:00 
+     Walltime requested: 08:00:00 			 Walltime Used: 00:00:00
+     Submit Time:  Sun Nov  8 18:17:37 2026 		 Start Time: Sun Nov  8 18:20:28 2026 
+     End Time: Sun Nov  8 18:20:29 2026 
+     Execution Nodes Used: (cnode-33-43-20:ncpus=12:mem=33554432kb)
+     ======================================================================================

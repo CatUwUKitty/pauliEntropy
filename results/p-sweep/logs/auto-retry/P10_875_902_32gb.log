@@ -1,0 +1,52 @@
+Available solvers: ['CLARABEL', 'MOSEK', 'OSQP', 'SCIPY', 'SCS']
+Run new sweeps: False | Retry saved collision rows: False | Run baseline validation: False
+   p  H_vN_bits  V_bits_squared  Hmin_unsmoothed_bits
+0.05   0.713603        0.857132              0.478055
+Python packages: CVXPY 1.7.5, NumPy 2.2.6
+Output: /home/svu/e1398082/pauli/results/p-sweep/shards/p0.10/875-902
+[1/196] collision: solving {'p': 0.1, 'epsilon': 0.1, 'n': 875, 'solver': 'MOSEK', 'tol': 1e-05}
+[2/196] collision: solving {'p': 0.1, 'epsilon': 0.01, 'n': 875, 'solver': 'MOSEK', 'tol': 1e-05}
+[3/196] collision: solving {'p': 0.1, 'epsilon': 0.001, 'n': 875, 'solver': 'MOSEK', 'tol': 1e-05}
+[4/196] collision: solving {'p': 0.1, 'epsilon': 0.0001, 'n': 875, 'solver': 'MOSEK', 'tol': 1e-05}
+[5/196] collision: solving {'p': 0.1, 'epsilon': 1e-05, 'n': 875, 'solver': 'MOSEK', 'tol': 1e-05}
+[6/196] collision: solving {'p': 0.1, 'epsilon': 1e-06, 'n': 875, 'solver': 'MOSEK', 'tol': 1e-05}
+[7/196] collision: solving {'p': 0.1, 'epsilon': 0.0, 'n': 875, 'solver': 'MOSEK', 'tol': 1e-05}
+[8/196] collision: solving {'p': 0.1, 'epsilon': 0.1, 'n': 876, 'solver': 'MOSEK', 'tol': 1e-05}
+[9/196] collision: solving {'p': 0.1, 'epsilon': 0.01, 'n': 876, 'solver': 'MOSEK', 'tol': 1e-05}
+[10/196] collision: solving {'p': 0.1, 'epsilon': 0.001, 'n': 876, 'solver': 'MOSEK', 'tol': 1e-05}
+[11/196] collision: solving {'p': 0.1, 'epsilon': 0.0001, 'n': 876, 'solver': 'MOSEK', 'tol': 1e-05}
+[12/196] collision: solving {'p': 0.1, 'epsilon': 1e-05, 'n': 876, 'solver': 'MOSEK', 'tol': 1e-05}
+[13/196] collision: solving {'p': 0.1, 'epsilon': 1e-06, 'n': 876, 'solver': 'MOSEK', 'tol': 1e-05}
+[14/196] collision: solving {'p': 0.1, 'epsilon': 0.0, 'n': 876, 'solver': 'MOSEK', 'tol': 1e-05}
+[15/196] collision: solving {'p': 0.1, 'epsilon': 0.1, 'n': 877, 'solver': 'MOSEK', 'tol': 1e-05}
+[16/196] collision: solving {'p': 0.1, 'epsilon': 0.01, 'n': 877, 'solver': 'MOSEK', 'tol': 1e-05}
+[17/196] collision: solving {'p': 0.1, 'epsilon': 0.001, 'n': 877, 'solver': 'MOSEK', 'tol': 1e-05}
+[18/196] collision: solving {'p': 0.1, 'epsilon': 0.0001, 'n': 877, 'solver': 'MOSEK', 'tol': 1e-05}
+[19/196] collision: solving {'p': 0.1, 'epsilon': 1e-05, 'n': 877, 'solver': 'MOSEK', 'tol': 1e-05}
+[20/196] collision: solving {'p': 0.1, 'epsilon': 1e-06, 'n': 877, 'solver': 'MOSEK', 'tol': 1e-05}
+[21/196] collision: solving {'p': 0.1, 'epsilon': 0.0, 'n': 877, 'solver': 'MOSEK', 'tol': 1e-05}
+[22/196] collision: solving {'p': 0.1, 'epsilon': 0.1, 'n': 878, 'solver': 'MOSEK', 'tol': 1e-05}
+[23/196] collision: solving {'p': 0.1, 'epsilon': 0.01, 'n': 878, 'solver': 'MOSEK', 'tol': 1e-05}
+[24/196] collision: solving {'p': 0.1, 'epsilon': 0.001, 'n': 878, 'solver': 'MOSEK', 'tol': 1e-05}
+[25/196] collision: solving {'p': 0.1, 'epsilon': 0.0001, 'n': 878, 'solver': 'MOSEK', 'tol': 1e-05}
+[26/196] collision: solving {'p': 0.1, 'epsilon': 1e-05, 'n': 878, 'solver': 'MOSEK', 'tol': 1e-05}
+[27/196] collision: solving {'p': 0.1, 'epsilon': 1e-06, 'n': 878, 'solver': 'MOSEK', 'tol': 1e-05}
+[28/196] collision: solving {'p': 0.1, 'epsilon': 0.0, 'n': 878, 'solver': 'MOSEK', 'tol': 1e-05}
+[29/196] collision: solving {'p': 0.1, 'epsilon': 0.1, 'n': 879, 'solver': 'MOSEK', 'tol': 1e-05}
+-bash: line 1: 29293 Killed                  /var/spool/pbs/mom_priv/jobs/1036632.venus01.SC
+      ======================================================================================
+     Resource Usage on 2026-11-08 19:16:01.290027:
+     JobId: 1036632.venus01  				 Project: Entropy 
+     Submission Host: atlas8-c01 
+     Exit Status: 137
+     NCPUs Requested: 12 				 NCPUs Used: 12
+     Memory Requested: 32gb 				 Memory Used: 32795492kb 
+     Vmem Used: 81813384kb
+     CPU Time Used: 04:45:49 
+     Walltime requested: 08:00:00 			 Walltime Used: 00:44:47
+     Submit Time:  Sun Nov  8 18:30:11 2026 		 Start Time: Sun Nov  8 18:31:14 2026 
+     End Time: Sun Nov  8 19:16:01 2026 
+     Execution Nodes Used: (cnode-33-43-28:ncpus=12:mem=33554432kb)
+     ======================================================================================
+Cgroup mem limit exceeded: Task in /pbs_jobs.service/jobid/1036632.venus01 killed as a result of limit of /pbs_jobs.service/jobid/1036632.venus01
+

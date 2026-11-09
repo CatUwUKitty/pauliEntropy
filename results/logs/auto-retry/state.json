@@ -3,7 +3,7 @@
     {
       "ram_gb": 32,
       "job_id": "1036244.venus01",
-      "exit_status": null,
+      "exit_status": 0,
       "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_1_570_32gb.log"
     }
   ],
@@ -11,7 +11,7 @@
     {
       "ram_gb": 32,
       "job_id": "1036245.venus01",
-      "exit_status": null,
+      "exit_status": 0,
       "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_571_680_32gb.log"
     }
   ],
@@ -19,7 +19,7 @@
     {
       "ram_gb": 32,
       "job_id": "1036246.venus01",
-      "exit_status": null,
+      "exit_status": 0,
       "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_681_750_32gb.log"
     }
   ],
@@ -27,7 +27,7 @@
     {
       "ram_gb": 32,
       "job_id": "1036247.venus01",
-      "exit_status": null,
+      "exit_status": 0,
       "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_751_805_32gb.log"
     }
   ],
@@ -35,7 +35,7 @@
     {
       "ram_gb": 32,
       "job_id": "1036248.venus01",
-      "exit_status": null,
+      "exit_status": 0,
       "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_806_850_32gb.log"
     }
   ],
@@ -43,7 +43,7 @@
     {
       "ram_gb": 32,
       "job_id": "1036249.venus01",
-      "exit_status": null,
+      "exit_status": 0,
       "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_851_890_32gb.log"
     }
   ],
@@ -51,7 +51,7 @@
     {
       "ram_gb": 32,
       "job_id": "1036250.venus01",
-      "exit_status": null,
+      "exit_status": 0,
       "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_891_920_32gb.log"
     }
   ],
@@ -59,7 +59,7 @@
     {
       "ram_gb": 32,
       "job_id": "1036251.venus01",
-      "exit_status": null,
+      "exit_status": 0,
       "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_921_950_32gb.log"
     }
   ],
@@ -67,7 +67,7 @@
     {
       "ram_gb": 32,
       "job_id": "1036252.venus01",
-      "exit_status": null,
+      "exit_status": 0,
       "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_951_975_32gb.log"
     }
   ],
@@ -75,7 +75,7 @@
     {
       "ram_gb": 32,
       "job_id": "1036253.venus01",
-      "exit_status": null,
+      "exit_status": 0,
       "log": "/home/svu/e1398082/pauli/results/logs/auto-retry/Pauli_976_1000_32gb.log"
     }
   ]

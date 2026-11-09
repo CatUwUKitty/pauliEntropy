@@ -1,0 +1,14 @@
+      ======================================================================================
+     Resource Usage on 2026-11-08 18:28:53.939964:
+     JobId: 1036609.venus01  				 Project: Entropy 
+     Submission Host: atlas8-c01 
+     Exit Status: 271
+     NCPUs Requested: 12 				 NCPUs Used: 12
+     Memory Requested: 64gb 				 Memory Used: 0kb 
+     Vmem Used: 0kb
+     CPU Time Used: 00:00:00 
+     Walltime requested: 08:00:00 			 Walltime Used: 00:00:01
+     Submit Time:  Sun Nov  8 18:20:55 2026 		 Start Time: Sun Nov  8 18:28:53 2026 
+     End Time: Sun Nov  8 18:28:53 2026 
+     Execution Nodes Used: (cnode-33-43-27:ncpus=12:mem=67108864kb)
+     ======================================================================================

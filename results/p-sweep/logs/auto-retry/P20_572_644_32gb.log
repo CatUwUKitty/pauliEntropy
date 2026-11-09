@@ -1,0 +1,35 @@
+Python module initialization is unavailable on cnode-33-43-20. Using the existing Pauli virtual environment.
+Using Python shared libraries from /app1/ebapps/arches/flat-avx2/software/Python/3.10.4-GCCcore-11.3.0/lib
+Traceback (most recent call last):
+  File "/home/svu/e1398082/pauli/run_cluster.py", line 140, in <module>
+    raise SystemExit(main())
+  File "/home/svu/e1398082/pauli/run_cluster.py", line 81, in main
+    ns = load_solver_cells(output_dir, seeds)
+  File "/home/svu/e1398082/pauli/run_cluster.py", line 67, in load_solver_cells
+    exec(compile(sources[cell_id], f"{NOTEBOOK.name}:{cell_id}", "exec"), namespace)
+  File "pauli_combined_entropy.ipynb:pauli-001", line 13, in <module>
+  File "/home/svu/e1398082/myenv/lib/python3.10/site-packages/pandas/__init__.py", line 49, in <module>
+    from pandas.core.api import (
+  File "/home/svu/e1398082/myenv/lib/python3.10/site-packages/pandas/core/api.py", line 9, in <module>
+    from pandas.core.dtypes.dtypes import (
+  File "/home/svu/e1398082/myenv/lib/python3.10/site-packages/pandas/core/dtypes/dtypes.py", line 47, in <module>
+    from pandas.errors import PerformanceWarning
+  File "/home/svu/e1398082/myenv/lib/python3.10/site-packages/pandas/errors/__init__.py", line 6, in <module>
+    import ctypes
+  File "/app1/ebapps/arches/flat-avx2/software/Python/3.10.4-GCCcore-11.3.0/lib/python3.10/ctypes/__init__.py", line 8, in <module>
+    from _ctypes import Union, Structure, Array
+ImportError: libffi.so.8: cannot open shared object file: No such file or directory
+      ======================================================================================
+     Resource Usage on 2026-11-08 23:33:02.369928:
+     JobId: 1036639.venus01  				 Project: Entropy 
+     Submission Host: atlas8-c01 
+     Exit Status: 1
+     NCPUs Requested: 12 				 NCPUs Used: 12
+     Memory Requested: 32gb 				 Memory Used: 0b 
+     Vmem Used: 351024kb
+     CPU Time Used: 00:00:00 
+     Walltime requested: 08:00:00 			 Walltime Used: 00:00:21
+     Submit Time:  Sun Nov  8 18:30:11 2026 		 Start Time: Sun Nov  8 23:32:41 2026 
+     End Time: Sun Nov  8 23:33:02 2026 
+     Execution Nodes Used: (cnode-33-43-20:ncpus=12:mem=33554432kb)
+     ======================================================================================
