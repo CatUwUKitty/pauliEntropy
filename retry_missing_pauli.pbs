@@ -1,0 +1,21 @@
+#!/bin/bash
+#PBS -P Entropy
+#PBS -q parallel
+#PBS -j oe
+
+set -euo pipefail
+cd "$PBS_O_WORKDIR"
+
+shards=(
+  '0.10 875 902' '0.10 903 932' '0.10 933 956' '0.10 957 979'
+  '0.20 572 644' '0.20 645 694' '0.20 695 743' '0.20 744 787'
+  '0.20 788 823' '0.20 824 855' '0.20 856 879' '0.20 880 900'
+  '0.20 901 924' '0.20 925 947' '0.20 948 964' '0.20 965 983'
+  '0.20 984 1000'
+)
+
+read -r PAULI_P PAULI_MIN_N PAULI_MAX_N <<< "${shards[PBS_ARRAY_INDEX-1]}"
+export PAULI_P PAULI_MIN_N PAULI_MAX_N
+export PAULI_OUTPUT_DIR="results/p-sweep/shards/p$PAULI_P/$PAULI_MIN_N-$PAULI_MAX_N"
+echo "Resuming $PAULI_OUTPUT_DIR"
+exec bash ./submit.pbs
