@@ -1,0 +1,145 @@
+Resuming results/p-sweep/shards/p0.20/965-983
+Available solvers: ['CLARABEL', 'MOSEK', 'OSQP', 'SCIPY', 'SCS']
+Run new sweeps: False | Retry saved collision rows: False | Run baseline validation: False
+   p  H_vN_bits  V_bits_squared  Hmin_unsmoothed_bits
+0.05   0.713603        0.857132              0.478055
+Python packages: CVXPY 1.7.5, NumPy 2.2.6
+Output: /home/svu/e1398082/pauli/results/p-sweep/shards/p0.20/965-983
+[1/133] collision: solving {'p': 0.2, 'epsilon': 0.1, 'n': 965, 'solver': 'MOSEK', 'tol': 1e-05}
+[2/133] collision: solving {'p': 0.2, 'epsilon': 0.01, 'n': 965, 'solver': 'MOSEK', 'tol': 1e-05}
+[3/133] collision: solving {'p': 0.2, 'epsilon': 0.001, 'n': 965, 'solver': 'MOSEK', 'tol': 1e-05}
+[4/133] collision: solving {'p': 0.2, 'epsilon': 0.0001, 'n': 965, 'solver': 'MOSEK', 'tol': 1e-05}
+[5/133] collision: solving {'p': 0.2, 'epsilon': 1e-05, 'n': 965, 'solver': 'MOSEK', 'tol': 1e-05}
+[6/133] collision: solving {'p': 0.2, 'epsilon': 1e-06, 'n': 965, 'solver': 'MOSEK', 'tol': 1e-05}
+[7/133] collision: solving {'p': 0.2, 'epsilon': 0.0, 'n': 965, 'solver': 'MOSEK', 'tol': 1e-05}
+[8/133] collision: solving {'p': 0.2, 'epsilon': 0.1, 'n': 966, 'solver': 'MOSEK', 'tol': 1e-05}
+[9/133] collision: solving {'p': 0.2, 'epsilon': 0.01, 'n': 966, 'solver': 'MOSEK', 'tol': 1e-05}
+[10/133] collision: solving {'p': 0.2, 'epsilon': 0.001, 'n': 966, 'solver': 'MOSEK', 'tol': 1e-05}
+[11/133] collision: solving {'p': 0.2, 'epsilon': 0.0001, 'n': 966, 'solver': 'MOSEK', 'tol': 1e-05}
+[12/133] collision: solving {'p': 0.2, 'epsilon': 1e-05, 'n': 966, 'solver': 'MOSEK', 'tol': 1e-05}
+[13/133] collision: solving {'p': 0.2, 'epsilon': 1e-06, 'n': 966, 'solver': 'MOSEK', 'tol': 1e-05}
+[14/133] collision: solving {'p': 0.2, 'epsilon': 0.0, 'n': 966, 'solver': 'MOSEK', 'tol': 1e-05}
+[15/133] collision: solving {'p': 0.2, 'epsilon': 0.1, 'n': 967, 'solver': 'MOSEK', 'tol': 1e-05}
+[16/133] collision: solving {'p': 0.2, 'epsilon': 0.01, 'n': 967, 'solver': 'MOSEK', 'tol': 1e-05}
+[17/133] collision: solving {'p': 0.2, 'epsilon': 0.001, 'n': 967, 'solver': 'MOSEK', 'tol': 1e-05}
+[18/133] collision: solving {'p': 0.2, 'epsilon': 0.0001, 'n': 967, 'solver': 'MOSEK', 'tol': 1e-05}
+[19/133] collision: solving {'p': 0.2, 'epsilon': 1e-05, 'n': 967, 'solver': 'MOSEK', 'tol': 1e-05}
+[20/133] collision: solving {'p': 0.2, 'epsilon': 1e-06, 'n': 967, 'solver': 'MOSEK', 'tol': 1e-05}
+[21/133] collision: solving {'p': 0.2, 'epsilon': 0.0, 'n': 967, 'solver': 'MOSEK', 'tol': 1e-05}
+[22/133] collision: solving {'p': 0.2, 'epsilon': 0.1, 'n': 968, 'solver': 'MOSEK', 'tol': 1e-05}
+[23/133] collision: solving {'p': 0.2, 'epsilon': 0.01, 'n': 968, 'solver': 'MOSEK', 'tol': 1e-05}
+[24/133] collision: solving {'p': 0.2, 'epsilon': 0.001, 'n': 968, 'solver': 'MOSEK', 'tol': 1e-05}
+[25/133] collision: solving {'p': 0.2, 'epsilon': 0.0001, 'n': 968, 'solver': 'MOSEK', 'tol': 1e-05}
+[26/133] collision: solving {'p': 0.2, 'epsilon': 1e-05, 'n': 968, 'solver': 'MOSEK', 'tol': 1e-05}
+[27/133] collision: solving {'p': 0.2, 'epsilon': 1e-06, 'n': 968, 'solver': 'MOSEK', 'tol': 1e-05}
+[28/133] collision: solving {'p': 0.2, 'epsilon': 0.0, 'n': 968, 'solver': 'MOSEK', 'tol': 1e-05}
+[29/133] collision: solving {'p': 0.2, 'epsilon': 0.1, 'n': 969, 'solver': 'MOSEK', 'tol': 1e-05}
+[30/133] collision: solving {'p': 0.2, 'epsilon': 0.01, 'n': 969, 'solver': 'MOSEK', 'tol': 1e-05}
+[31/133] collision: solving {'p': 0.2, 'epsilon': 0.001, 'n': 969, 'solver': 'MOSEK', 'tol': 1e-05}
+[32/133] collision: solving {'p': 0.2, 'epsilon': 0.0001, 'n': 969, 'solver': 'MOSEK', 'tol': 1e-05}
+[33/133] collision: solving {'p': 0.2, 'epsilon': 1e-05, 'n': 969, 'solver': 'MOSEK', 'tol': 1e-05}
+[34/133] collision: solving {'p': 0.2, 'epsilon': 1e-06, 'n': 969, 'solver': 'MOSEK', 'tol': 1e-05}
+[35/133] collision: solving {'p': 0.2, 'epsilon': 0.0, 'n': 969, 'solver': 'MOSEK', 'tol': 1e-05}
+[36/133] collision: solving {'p': 0.2, 'epsilon': 0.1, 'n': 970, 'solver': 'MOSEK', 'tol': 1e-05}
+[37/133] collision: solving {'p': 0.2, 'epsilon': 0.01, 'n': 970, 'solver': 'MOSEK', 'tol': 1e-05}
+[38/133] collision: solving {'p': 0.2, 'epsilon': 0.001, 'n': 970, 'solver': 'MOSEK', 'tol': 1e-05}
+[39/133] collision: solving {'p': 0.2, 'epsilon': 0.0001, 'n': 970, 'solver': 'MOSEK', 'tol': 1e-05}
+[40/133] collision: solving {'p': 0.2, 'epsilon': 1e-05, 'n': 970, 'solver': 'MOSEK', 'tol': 1e-05}
+[41/133] collision: solving {'p': 0.2, 'epsilon': 1e-06, 'n': 970, 'solver': 'MOSEK', 'tol': 1e-05}
+[42/133] collision: solving {'p': 0.2, 'epsilon': 0.0, 'n': 970, 'solver': 'MOSEK', 'tol': 1e-05}
+[43/133] collision: solving {'p': 0.2, 'epsilon': 0.1, 'n': 971, 'solver': 'MOSEK', 'tol': 1e-05}
+[44/133] collision: solving {'p': 0.2, 'epsilon': 0.01, 'n': 971, 'solver': 'MOSEK', 'tol': 1e-05}
+[45/133] collision: solving {'p': 0.2, 'epsilon': 0.001, 'n': 971, 'solver': 'MOSEK', 'tol': 1e-05}
+[46/133] collision: solving {'p': 0.2, 'epsilon': 0.0001, 'n': 971, 'solver': 'MOSEK', 'tol': 1e-05}
+[47/133] collision: solving {'p': 0.2, 'epsilon': 1e-05, 'n': 971, 'solver': 'MOSEK', 'tol': 1e-05}
+[48/133] collision: solving {'p': 0.2, 'epsilon': 1e-06, 'n': 971, 'solver': 'MOSEK', 'tol': 1e-05}
+[49/133] collision: solving {'p': 0.2, 'epsilon': 0.0, 'n': 971, 'solver': 'MOSEK', 'tol': 1e-05}
+[50/133] collision: solving {'p': 0.2, 'epsilon': 0.1, 'n': 972, 'solver': 'MOSEK', 'tol': 1e-05}
+[51/133] collision: solving {'p': 0.2, 'epsilon': 0.01, 'n': 972, 'solver': 'MOSEK', 'tol': 1e-05}
+[52/133] collision: solving {'p': 0.2, 'epsilon': 0.001, 'n': 972, 'solver': 'MOSEK', 'tol': 1e-05}
+[53/133] collision: solving {'p': 0.2, 'epsilon': 0.0001, 'n': 972, 'solver': 'MOSEK', 'tol': 1e-05}
+[54/133] collision: solving {'p': 0.2, 'epsilon': 1e-05, 'n': 972, 'solver': 'MOSEK', 'tol': 1e-05}
+[55/133] collision: solving {'p': 0.2, 'epsilon': 1e-06, 'n': 972, 'solver': 'MOSEK', 'tol': 1e-05}
+[56/133] collision: solving {'p': 0.2, 'epsilon': 0.0, 'n': 972, 'solver': 'MOSEK', 'tol': 1e-05}
+[57/133] collision: solving {'p': 0.2, 'epsilon': 0.1, 'n': 973, 'solver': 'MOSEK', 'tol': 1e-05}
+[58/133] collision: solving {'p': 0.2, 'epsilon': 0.01, 'n': 973, 'solver': 'MOSEK', 'tol': 1e-05}
+[59/133] collision: solving {'p': 0.2, 'epsilon': 0.001, 'n': 973, 'solver': 'MOSEK', 'tol': 1e-05}
+[60/133] collision: solving {'p': 0.2, 'epsilon': 0.0001, 'n': 973, 'solver': 'MOSEK', 'tol': 1e-05}
+[61/133] collision: solving {'p': 0.2, 'epsilon': 1e-05, 'n': 973, 'solver': 'MOSEK', 'tol': 1e-05}
+[62/133] collision: solving {'p': 0.2, 'epsilon': 1e-06, 'n': 973, 'solver': 'MOSEK', 'tol': 1e-05}
+[63/133] collision: solving {'p': 0.2, 'epsilon': 0.0, 'n': 973, 'solver': 'MOSEK', 'tol': 1e-05}
+[64/133] collision: solving {'p': 0.2, 'epsilon': 0.1, 'n': 974, 'solver': 'MOSEK', 'tol': 1e-05}
+[65/133] collision: solving {'p': 0.2, 'epsilon': 0.01, 'n': 974, 'solver': 'MOSEK', 'tol': 1e-05}
+[66/133] collision: solving {'p': 0.2, 'epsilon': 0.001, 'n': 974, 'solver': 'MOSEK', 'tol': 1e-05}
+[67/133] collision: solving {'p': 0.2, 'epsilon': 0.0001, 'n': 974, 'solver': 'MOSEK', 'tol': 1e-05}
+[68/133] collision: solving {'p': 0.2, 'epsilon': 1e-05, 'n': 974, 'solver': 'MOSEK', 'tol': 1e-05}
+[69/133] collision: solving {'p': 0.2, 'epsilon': 1e-06, 'n': 974, 'solver': 'MOSEK', 'tol': 1e-05}
+[70/133] collision: solving {'p': 0.2, 'epsilon': 0.0, 'n': 974, 'solver': 'MOSEK', 'tol': 1e-05}
+[71/133] collision: solving {'p': 0.2, 'epsilon': 0.1, 'n': 975, 'solver': 'MOSEK', 'tol': 1e-05}
+[72/133] collision: solving {'p': 0.2, 'epsilon': 0.01, 'n': 975, 'solver': 'MOSEK', 'tol': 1e-05}
+[73/133] collision: solving {'p': 0.2, 'epsilon': 0.001, 'n': 975, 'solver': 'MOSEK', 'tol': 1e-05}
+[74/133] collision: solving {'p': 0.2, 'epsilon': 0.0001, 'n': 975, 'solver': 'MOSEK', 'tol': 1e-05}
+[75/133] collision: solving {'p': 0.2, 'epsilon': 1e-05, 'n': 975, 'solver': 'MOSEK', 'tol': 1e-05}
+[76/133] collision: solving {'p': 0.2, 'epsilon': 1e-06, 'n': 975, 'solver': 'MOSEK', 'tol': 1e-05}
+[77/133] collision: solving {'p': 0.2, 'epsilon': 0.0, 'n': 975, 'solver': 'MOSEK', 'tol': 1e-05}
+[78/133] collision: solving {'p': 0.2, 'epsilon': 0.1, 'n': 976, 'solver': 'MOSEK', 'tol': 1e-05}
+[79/133] collision: solving {'p': 0.2, 'epsilon': 0.01, 'n': 976, 'solver': 'MOSEK', 'tol': 1e-05}
+[80/133] collision: solving {'p': 0.2, 'epsilon': 0.001, 'n': 976, 'solver': 'MOSEK', 'tol': 1e-05}
+[81/133] collision: solving {'p': 0.2, 'epsilon': 0.0001, 'n': 976, 'solver': 'MOSEK', 'tol': 1e-05}
+[82/133] collision: solving {'p': 0.2, 'epsilon': 1e-05, 'n': 976, 'solver': 'MOSEK', 'tol': 1e-05}
+[83/133] collision: solving {'p': 0.2, 'epsilon': 1e-06, 'n': 976, 'solver': 'MOSEK', 'tol': 1e-05}
+[84/133] collision: solving {'p': 0.2, 'epsilon': 0.0, 'n': 976, 'solver': 'MOSEK', 'tol': 1e-05}
+[85/133] collision: solving {'p': 0.2, 'epsilon': 0.1, 'n': 977, 'solver': 'MOSEK', 'tol': 1e-05}
+[86/133] collision: solving {'p': 0.2, 'epsilon': 0.01, 'n': 977, 'solver': 'MOSEK', 'tol': 1e-05}
+[87/133] collision: solving {'p': 0.2, 'epsilon': 0.001, 'n': 977, 'solver': 'MOSEK', 'tol': 1e-05}
+[88/133] collision: solving {'p': 0.2, 'epsilon': 0.0001, 'n': 977, 'solver': 'MOSEK', 'tol': 1e-05}
+[89/133] collision: solving {'p': 0.2, 'epsilon': 1e-05, 'n': 977, 'solver': 'MOSEK', 'tol': 1e-05}
+[90/133] collision: solving {'p': 0.2, 'epsilon': 1e-06, 'n': 977, 'solver': 'MOSEK', 'tol': 1e-05}
+[91/133] collision: solving {'p': 0.2, 'epsilon': 0.0, 'n': 977, 'solver': 'MOSEK', 'tol': 1e-05}
+[92/133] collision: solving {'p': 0.2, 'epsilon': 0.1, 'n': 978, 'solver': 'MOSEK', 'tol': 1e-05}
+[93/133] collision: solving {'p': 0.2, 'epsilon': 0.01, 'n': 978, 'solver': 'MOSEK', 'tol': 1e-05}
+[94/133] collision: solving {'p': 0.2, 'epsilon': 0.001, 'n': 978, 'solver': 'MOSEK', 'tol': 1e-05}
+[95/133] collision: solving {'p': 0.2, 'epsilon': 0.0001, 'n': 978, 'solver': 'MOSEK', 'tol': 1e-05}
+[96/133] collision: solving {'p': 0.2, 'epsilon': 1e-05, 'n': 978, 'solver': 'MOSEK', 'tol': 1e-05}
+[97/133] collision: solving {'p': 0.2, 'epsilon': 1e-06, 'n': 978, 'solver': 'MOSEK', 'tol': 1e-05}
+[98/133] collision: solving {'p': 0.2, 'epsilon': 0.0, 'n': 978, 'solver': 'MOSEK', 'tol': 1e-05}
+[99/133] collision: solving {'p': 0.2, 'epsilon': 0.1, 'n': 979, 'solver': 'MOSEK', 'tol': 1e-05}
+[100/133] collision: solving {'p': 0.2, 'epsilon': 0.01, 'n': 979, 'solver': 'MOSEK', 'tol': 1e-05}
+[101/133] collision: solving {'p': 0.2, 'epsilon': 0.001, 'n': 979, 'solver': 'MOSEK', 'tol': 1e-05}
+[102/133] collision: solving {'p': 0.2, 'epsilon': 0.0001, 'n': 979, 'solver': 'MOSEK', 'tol': 1e-05}
+[103/133] collision: solving {'p': 0.2, 'epsilon': 1e-05, 'n': 979, 'solver': 'MOSEK', 'tol': 1e-05}
+[104/133] collision: solving {'p': 0.2, 'epsilon': 1e-06, 'n': 979, 'solver': 'MOSEK', 'tol': 1e-05}
+[105/133] collision: solving {'p': 0.2, 'epsilon': 0.0, 'n': 979, 'solver': 'MOSEK', 'tol': 1e-05}
+[106/133] collision: solving {'p': 0.2, 'epsilon': 0.1, 'n': 980, 'solver': 'MOSEK', 'tol': 1e-05}
+[107/133] collision: solving {'p': 0.2, 'epsilon': 0.01, 'n': 980, 'solver': 'MOSEK', 'tol': 1e-05}
+[108/133] collision: solving {'p': 0.2, 'epsilon': 0.001, 'n': 980, 'solver': 'MOSEK', 'tol': 1e-05}
+[109/133] collision: solving {'p': 0.2, 'epsilon': 0.0001, 'n': 980, 'solver': 'MOSEK', 'tol': 1e-05}
+[110/133] collision: solving {'p': 0.2, 'epsilon': 1e-05, 'n': 980, 'solver': 'MOSEK', 'tol': 1e-05}
+[111/133] collision: solving {'p': 0.2, 'epsilon': 1e-06, 'n': 980, 'solver': 'MOSEK', 'tol': 1e-05}
+[112/133] collision: solving {'p': 0.2, 'epsilon': 0.0, 'n': 980, 'solver': 'MOSEK', 'tol': 1e-05}
+[113/133] collision: solving {'p': 0.2, 'epsilon': 0.1, 'n': 981, 'solver': 'MOSEK', 'tol': 1e-05}
+[114/133] collision: solving {'p': 0.2, 'epsilon': 0.01, 'n': 981, 'solver': 'MOSEK', 'tol': 1e-05}
+[115/133] collision: solving {'p': 0.2, 'epsilon': 0.001, 'n': 981, 'solver': 'MOSEK', 'tol': 1e-05}
+[116/133] collision: solving {'p': 0.2, 'epsilon': 0.0001, 'n': 981, 'solver': 'MOSEK', 'tol': 1e-05}
+[117/133] collision: solving {'p': 0.2, 'epsilon': 1e-05, 'n': 981, 'solver': 'MOSEK', 'tol': 1e-05}
+[118/133] collision: solving {'p': 0.2, 'epsilon': 1e-06, 'n': 981, 'solver': 'MOSEK', 'tol': 1e-05}
+[119/133] collision: solving {'p': 0.2, 'epsilon': 0.0, 'n': 981, 'solver': 'MOSEK', 'tol': 1e-05}
+[120/133] collision: solving {'p': 0.2, 'epsilon': 0.1, 'n': 982, 'solver': 'MOSEK', 'tol': 1e-05}
+[121/133] collision: solving {'p': 0.2, 'epsilon': 0.01, 'n': 982, 'solver': 'MOSEK', 'tol': 1e-05}
+[122/133] collision: solving {'p': 0.2, 'epsilon': 0.001, 'n': 982, 'solver': 'MOSEK', 'tol': 1e-05}
+[123/133] collision: solving {'p': 0.2, 'epsilon': 0.0001, 'n': 982, 'solver': 'MOSEK', 'tol': 1e-05}
+=>> PBS: job killed: walltime 28823 exceeded limit 28800
+      ======================================================================================
+     Resource Usage on 2026-11-11 05:45:36.394819:
+     JobId: 1037175[16].venus01  				 Project: Entropy 
+     Submission Host: atlas8-c01 
+     Exit Status: -29
+     NCPUs Requested: 12 				 NCPUs Used: 12
+     Memory Requested: 64gb 				 Memory Used: 50922584kb 
+     Vmem Used: 153217732kb
+     CPU Time Used: 55:17:26 
+     Walltime requested: 08:00:00 			 Walltime Used: 08:00:34
+     Submit Time:  Mon Nov  9 14:20:28 2026 		 Start Time: Wed Nov 11 05:45:25 2026 
+     End Time: Wed Nov 11 05:45:36 2026 
+     Execution Nodes Used: (cnode-33-43-27:ncpus=12:mem=67108864kb)
+     ======================================================================================
